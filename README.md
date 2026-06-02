@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # inventory management system using React + Vite (not completed yet !)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -29,6 +28,3 @@ Currently, two official plugins are available:
   ![click me](https://github.com/IMDADMI/inventory-management-system/blob/6-revenue-part/src/assets/Home.PNG?raw=true)
   - ## Growth
   ![click me](https://github.com/IMDADMI/inventory-management-system/blob/7-growth-part/src/assets/Home.PNG?raw=true)
-=======
-# Smart-Inventory-Management-System-Website
->>>>>>> 8698e98f65718fd93eb1f861eca702d3fa74a735
