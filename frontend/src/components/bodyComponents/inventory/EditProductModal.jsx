@@ -26,7 +26,7 @@ import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://smart-inventory-management-system-backend.onrender.com/api";
 
 const modernInputStyle = {
   "& .MuiOutlinedInput-root": {

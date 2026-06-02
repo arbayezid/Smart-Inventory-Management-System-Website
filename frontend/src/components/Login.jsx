@@ -39,7 +39,7 @@ const Login = () => {
       );
       console.log("Logged in user:", userCredential.user);
 
-      const res = await fetch("http://localhost:5000/api/auth/sync", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/auth/sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -82,7 +82,7 @@ const Login = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       console.log("Google Sign In successful:", result.user);
-      const res = await fetch("http://localhost:5000/api/auth/sync", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/auth/sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -13,8 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // Content type test
-app.get('/api', (req, res) => {
-  res.json({ message: 'Welcome to Inventory Management API' });
+app.get('/', (req, res) => {
+  res.send('Inventory Backend Running');
 });
 
 // Routes
@@ -34,12 +34,13 @@ app.use('/api/superadmin', superAdminRoutes);
 
 // MongoDB connection
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://sims:Y8ER5uHBsjK8gWyS@cluster0.qfy9fat.mongodb.net/inventory_management?retryWrites=true&w=majority&appName=Cluster0'
+const MONGO_URI = process.env.MONGO_URI;
+if (!MONGO_URI) {
+  console.error('❌  MONGO_URI is not defined. Please set it in your .env file.');
+  process.exit(1);
+}
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
 
@@ -71,7 +72,7 @@ mongoose.connect(MONGO_URI, {
     };
 
     process.on('SIGTERM', () => shutdown('SIGTERM'));
-    process.on('SIGINT',  () => shutdown('SIGINT'));
+    process.on('SIGINT', () => shutdown('SIGINT'));
   })
   .catch((error) => {
     console.error('MongoDB connection error:', error.message);

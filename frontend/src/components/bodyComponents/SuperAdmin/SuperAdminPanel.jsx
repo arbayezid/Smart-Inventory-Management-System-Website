@@ -20,14 +20,14 @@ export default function SuperAdminPanel() {
   const fetchDashboardData = async () => {
     const token = localStorage.getItem("token");
     try {
-      const statsRes = await fetch("http://localhost:5000/api/superadmin/dashboard-stats", {
+      const statsRes = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/dashboard-stats", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (statsRes.ok) {
         setStats(await statsRes.json());
       }
 
-      const shopsRes = await fetch("http://localhost:5000/api/superadmin/shops", {
+      const shopsRes = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (shopsRes.ok) {
@@ -56,7 +56,7 @@ export default function SuperAdminPanel() {
     setUsers(prev => prev.map(u => u.id === id ? { ...u, status: 'Active', statusObj: { label: 'Active', color: 'success' } } : u));
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/superadmin/shops/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }});
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) fetchDashboardData();
     } catch (err) { fetchDashboardData(); }
   };
@@ -66,7 +66,7 @@ export default function SuperAdminPanel() {
     setUsers(prev => prev.map(u => u.id === id ? { ...u, status: 'Rejected', statusObj: { label: 'Rejected', color: 'error' } } : u));
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/superadmin/shops/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }});
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) fetchDashboardData();
     } catch (err) { fetchDashboardData(); }
   };
@@ -88,7 +88,7 @@ export default function SuperAdminPanel() {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/users/${id}/toggle-status`, {
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/auth/users/${id}/toggle-status`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });

@@ -10,7 +10,7 @@ export default function CustomerList() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/api/orders", {
+    fetch("https://smart-inventory-management-system-backend.onrender.com/api/orders", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -35,10 +35,10 @@ export default function CustomerList() {
               totalAmount: order.totalAmount || 0,
               status: order.status || "Completed",
             }));
-          
+
           // Sort by date descending
           formattedData.sort((a, b) => b.rawDate - a.rawDate);
-          
+
           setCustomers(formattedData);
           setAllCustomers(formattedData);
         }
@@ -54,7 +54,7 @@ export default function CustomerList() {
   const handleDateFilterChange = (e) => {
     const selectedDate = e.target.value;
     setFilterDate(selectedDate);
-    
+
     if (selectedDate) {
       const filtered = allCustomers.filter((item) => {
         // Convert input date (YYYY-MM-DD) to local date string format
@@ -154,8 +154,8 @@ export default function CustomerList() {
         </Typography>
 
         {/* Date Filter Input */}
-        <input 
-          type="date" 
+        <input
+          type="date"
           value={filterDate}
           onChange={handleDateFilterChange}
           style={{

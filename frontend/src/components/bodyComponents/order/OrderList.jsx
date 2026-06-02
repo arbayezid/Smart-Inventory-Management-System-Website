@@ -15,7 +15,7 @@ export default class OrderList extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/api/orders", {
+    fetch("https://smart-inventory-management-system-backend.onrender.com/api/orders", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => res.json())

@@ -21,14 +21,14 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         setCurrentUser(user);
         try {
-          const res = await fetch("http://localhost:5000/api/auth/sync", {
+          const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/auth/sync", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               firebaseUid: user.uid,
               email: user.email,
               name: user.displayName || user.email,
-              role: "ShopOwner" 
+              role: "ShopOwner"
             }),
           });
           const data = await res.json();

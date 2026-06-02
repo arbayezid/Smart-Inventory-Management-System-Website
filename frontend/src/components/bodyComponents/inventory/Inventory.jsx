@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Products from "./Products";
 import Overview from "./Overview";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://smart-inventory-management-system-backend.onrender.com/api";
 
 export default function Inventory() {
   const [products, setProducts] = useState([]);

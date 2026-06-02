@@ -12,10 +12,10 @@ export default function RevenueReports() {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/superadmin/revenue", {
+        const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/revenue", {
           headers: { Authorization: `Bearer ${token}` }
         });
-        if(res.ok) {
+        if (res.ok) {
           setRevenue(await res.json());
         }
       } catch (err) {
@@ -89,21 +89,21 @@ export default function RevenueReports() {
 
         <Grid item xs={12} md={5}>
           <Paper sx={{ p: 4, borderRadius: 3, boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.02)', border: '1px solid #f0f0f0', height: '100%' }}>
-        <Typography variant="h6" fontWeight="bold" mb={3}>Revenue by Plan Type</Typography>
-        <Box mb={3}>
-          <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Premium Plan ({premiumPct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.premiumRev.toLocaleString()}</Typography></Box>
-          <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${premiumPct}%`, height: '100%', bgcolor: '#6366f1', borderRadius: 5 }} /></Box>
-        </Box>
-        <Box mb={3}>
-          <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Basic Plan ({basicPct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.basicRev.toLocaleString()}</Typography></Box>
-          <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${basicPct}%`, height: '100%', bgcolor: '#3b82f6', borderRadius: 5 }} /></Box>
-        </Box>
-        <Box mb={1}>
-          <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Enterprise Plan ({enterprisePct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.enterpriseRev.toLocaleString()}</Typography></Box>
-          <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${enterprisePct}%`, height: '100%', bgcolor: '#10b981', borderRadius: 5 }} /></Box>
-        </Box>
-      </Paper>
-      </Grid>
+            <Typography variant="h6" fontWeight="bold" mb={3}>Revenue by Plan Type</Typography>
+            <Box mb={3}>
+              <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Premium Plan ({premiumPct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.premiumRev.toLocaleString()}</Typography></Box>
+              <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${premiumPct}%`, height: '100%', bgcolor: '#6366f1', borderRadius: 5 }} /></Box>
+            </Box>
+            <Box mb={3}>
+              <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Basic Plan ({basicPct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.basicRev.toLocaleString()}</Typography></Box>
+              <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${basicPct}%`, height: '100%', bgcolor: '#3b82f6', borderRadius: 5 }} /></Box>
+            </Box>
+            <Box mb={1}>
+              <Box display="flex" justifyContent="space-between" mb={1}><Typography variant="body2">Enterprise Plan ({enterprisePct}%)</Typography><Typography variant="body2" fontWeight="bold">${revenue.enterpriseRev.toLocaleString()}</Typography></Box>
+              <Box sx={{ width: '100%', height: '8px', bgcolor: '#e5e7eb', borderRadius: 5 }}><Box sx={{ width: `${enterprisePct}%`, height: '100%', bgcolor: '#10b981', borderRadius: 5 }} /></Box>
+            </Box>
+          </Paper>
+        </Grid>
       </Grid>
     </Box>
   );

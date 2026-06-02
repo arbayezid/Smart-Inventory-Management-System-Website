@@ -17,12 +17,12 @@ export default function GlobalSettings() {
     const fetchSettings = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/superadmin/settings", {
+        const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/settings", {
           headers: { Authorization: `Bearer ${token}` }
         });
-        if(res.ok) setSettings(await res.json());
-      } catch(err) {
-         console.error(err);
+        if (res.ok) setSettings(await res.json());
+      } catch (err) {
+        console.error(err);
       }
     };
     fetchSettings();
@@ -37,14 +37,14 @@ export default function GlobalSettings() {
     setSaving(true);
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:5000/api/superadmin/settings", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(settings)
       });
-      if(res.ok) alert("Settings saved successfully!");
-    } catch(err) {
-       console.error(err);
+      if (res.ok) alert("Settings saved successfully!");
+    } catch (err) {
+      console.error(err);
     }
     setSaving(false);
   };

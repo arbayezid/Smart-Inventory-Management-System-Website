@@ -14,7 +14,7 @@ import {
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://smart-inventory-management-system-backend.onrender.com/api";
 
 export default function DeleteConfirmDialog({ open, product, onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);

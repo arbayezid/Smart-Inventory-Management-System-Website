@@ -46,7 +46,7 @@ export default function SellProduct() {
   // Fetch Products
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/api/products", {
+    fetch("https://smart-inventory-management-system-backend.onrender.com/api/products", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -121,7 +121,7 @@ export default function SellProduct() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/orders/checkout", {
+      const response = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/orders/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const Order = require('./models/Order');
+require('dotenv').config();
+const MONGO_URI = process.env.MONGO_URI;
+if (!MONGO_URI) {
+  console.error('❌  MONGO_URI is not defined. Please set it in your .env file.');
+  process.exit(1);
+}
 
-mongoose.connect('mongodb+srv://sims:Y8ER5uHBsjK8gWyS@cluster0.qfy9fat.mongodb.net/inventory_management?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(MONGO_URI)
   .then(async () => {
     const orders = await Order.find();
     console.log(`Remaining orders: ${orders.length}`);

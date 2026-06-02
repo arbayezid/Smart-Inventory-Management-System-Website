@@ -5,7 +5,10 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'secret', {
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined. Please set it in your .env file.');
+  }
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d',
   });
 };

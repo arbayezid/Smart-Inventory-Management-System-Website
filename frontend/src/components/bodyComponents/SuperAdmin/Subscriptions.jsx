@@ -10,17 +10,17 @@ export default function Subscriptions() {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/superadmin/subscriptions", {
+        const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/subscriptions", {
           headers: { Authorization: `Bearer ${token}` }
         });
-        if(res.ok) {
+        if (res.ok) {
           setCounts(await res.json());
         }
 
-        const shopsRes = await fetch("http://localhost:5000/api/superadmin/shops", {
+        const shopsRes = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops", {
           headers: { Authorization: `Bearer ${token}` }
         });
-        if(shopsRes.ok) {
+        if (shopsRes.ok) {
           const shopsData = await shopsRes.json();
           // Take the top 3 most recent active shops to act as "transactions"
           setRecentShops(shopsData.filter(s => s.status !== 'Suspended').slice(0, 3));
@@ -34,10 +34,10 @@ export default function Subscriptions() {
   }, []);
 
   const plans = [
-    { 
-      name: "Basic Plan", 
-      price: "$20/m", 
-      users: `${counts.basicUsers} Active Shops`, 
+    {
+      name: "Basic Plan",
+      price: "$20/m",
+      users: `${counts.basicUsers} Active Shops`,
       color: "#3b82f6",
       features: ["Unlimited Inventory Tracking", "Basic Analytics & Reporting", "1 Store Location", "Email Support"]
     }
@@ -82,13 +82,13 @@ export default function Subscriptions() {
         <Typography variant="h6" fontWeight="bold" mb={2}>Recent Transactions</Typography>
         <Divider mb={2} />
         {recentShops.length > 0 ? recentShops.map((shop, i) => (
-           <Box key={i} display="flex" justifyContent="space-between" p={2} borderBottom="1px solid #f0f0f0">
-             <Typography variant="body2" fontWeight="bold">{shop.name}</Typography>
-             <Typography variant="body2" color="text.secondary">Subscribed to {shop.plan}</Typography>
-             <Typography variant="body2" fontWeight="bold" color="success.main">+{shop.mrr}.00</Typography>
-           </Box>
+          <Box key={i} display="flex" justifyContent="space-between" p={2} borderBottom="1px solid #f0f0f0">
+            <Typography variant="body2" fontWeight="bold">{shop.name}</Typography>
+            <Typography variant="body2" color="text.secondary">Subscribed to {shop.plan}</Typography>
+            <Typography variant="body2" fontWeight="bold" color="success.main">+{shop.mrr}.00</Typography>
+          </Box>
         )) : (
-           <Typography variant="body2" color="text.secondary" p={2}>No recent transactions found.</Typography>
+          <Typography variant="body2" color="text.secondary" p={2}>No recent transactions found.</Typography>
         )}
         <Button sx={{ mt: 2, textTransform: 'none' }}>View All Transactions</Button>
       </Paper>

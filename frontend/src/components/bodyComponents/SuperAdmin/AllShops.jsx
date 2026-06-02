@@ -16,7 +16,7 @@ export default function AllShops() {
   const fetchShops = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/superadmin/shops", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -37,7 +37,7 @@ export default function AllShops() {
     setRows(prev => prev.map(u => u.id === id ? { ...u, status: 'Active' } : u));
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/superadmin/shops/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }});
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) fetchShops();
     } catch (err) { fetchShops(); }
   };
@@ -47,7 +47,7 @@ export default function AllShops() {
     setRows(prev => prev.map(u => u.id === id ? { ...u, status: 'Rejected' } : u));
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/superadmin/shops/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }});
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) fetchShops();
     } catch (err) { fetchShops(); }
   };
@@ -65,7 +65,7 @@ export default function AllShops() {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/users/${id}/toggle-status`, {
+      const res = await fetch(`https://smart-inventory-management-system-backend.onrender.com/api/auth/users/${id}/toggle-status`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -83,7 +83,7 @@ export default function AllShops() {
   const handleAddShop = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:5000/api/superadmin/shops", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/superadmin/shops", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -199,17 +199,17 @@ export default function AllShops() {
 
         {/* DataGrid */}
         <Box sx={{ width: '100%', height: 500, bgcolor: "#fff" }}>
-          <DataGrid 
+          <DataGrid
             rows={rows.filter(r => {
               if (tabValue === "All") return true;
               if (tabValue === "Pending") return r.status === "Pending";
               if (tabValue === "Active") return r.status === "Active";
               if (tabValue === "Rejected") return r.status === "Rejected" || r.status === "Restricted";
               return true;
-            })} 
-            columns={columns} 
-            disableRowSelectionOnClick 
-            sx={{ border: 'none', '& .MuiDataGrid-columnHeaders': { backgroundColor: '#fdfdfd' } }} 
+            })}
+            columns={columns}
+            disableRowSelectionOnClick
+            sx={{ border: 'none', '& .MuiDataGrid-columnHeaders': { backgroundColor: '#fdfdfd' } }}
           />
         </Box>
       </Paper>

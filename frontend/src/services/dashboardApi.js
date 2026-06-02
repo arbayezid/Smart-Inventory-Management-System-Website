@@ -3,10 +3,10 @@
  * 
  * Centralized fetch functions for all dashboard data.
  * All functions read the JWT token from localStorage and
- * hit the backend REST API at http://localhost:5000.
+ * hit the backend REST API at https://smart-inventory-management-system-backend.onrender.com.
  */
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://smart-inventory-management-system-backend.onrender.com/api";
 
 /**
  * Helper: builds an authorized GET request and parses JSON.

@@ -105,9 +105,9 @@ export default function AiAnalytics() {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [productsRes, ordersRes, customersRes] = await Promise.all([
-          fetch("http://localhost:5000/api/products", { headers }),
-          fetch("http://localhost:5000/api/orders", { headers }),
-          fetch("http://localhost:5000/api/customers", { headers }),
+          fetch("https://smart-inventory-management-system-backend.onrender.com/api/products", { headers }),
+          fetch("https://smart-inventory-management-system-backend.onrender.com/api/orders", { headers }),
+          fetch("https://smart-inventory-management-system-backend.onrender.com/api/customers", { headers }),
         ]);
 
         const products = productsRes.ok ? await productsRes.json() : [];

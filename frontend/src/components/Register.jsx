@@ -53,7 +53,7 @@ const Register = () => {
       console.log("User registered and profile updated:", user);
 
       try {
-        const res = await fetch("http://localhost:5000/api/auth/sync", {
+        const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/auth/sync", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -93,7 +93,7 @@ const Register = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      const res = await fetch("http://localhost:5000/api/auth/sync", {
+      const res = await fetch("https://smart-inventory-management-system-backend.onrender.com/api/auth/sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

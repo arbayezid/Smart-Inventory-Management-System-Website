@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://sims:Y8ER5uHBsjK8gWyS@cluster0.qfy9fat.mongodb.net/inventory_management?retryWrites=true&w=majority&appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI;
+if (!MONGO_URI) {
+  console.error('❌  MONGO_URI is not defined. Please set it in your .env file.');
+  process.exit(1);
+}
 
 mongoose.connect(MONGO_URI)
   .then(async () => {
