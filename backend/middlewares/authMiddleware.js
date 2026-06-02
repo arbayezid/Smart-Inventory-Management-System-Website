@@ -13,11 +13,11 @@ const protect = async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
 
       req.user = await User.findById(decoded.id).select('-password');
-      
+
       if (!req.user) {
         return res.status(401).json({ message: 'Not authorized, user not found' });
       }
-      
+
       if (!req.user.isActive) {
         return res.status(403).json({ message: 'Your account has been suspended by the Super Admin.' });
       }
@@ -28,6 +28,7 @@ const protect = async (req, res, next) => {
       res.status(401).json({ message: 'Not authorized, token failed' });
     }
   }
+
 
   if (!token) {
     res.status(401).json({ message: 'Not authorized, no token' });
